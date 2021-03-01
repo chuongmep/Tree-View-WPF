@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 
 using System.ComponentModel;
+using OOG.Core.WPFSupport.Utilities;
 
 namespace TreeView
 {
-    public class TreeViewModel : INotifyPropertyChanged
+    public class TreeViewModel : ViewModelBase
     {
         TreeViewModel(string name)
         {
@@ -44,7 +45,7 @@ namespace TreeView
 
             if (updateParent && _parent != null) _parent.VerifyCheckedState();
 
-            NotifyPropertyChanged("IsChecked");
+            OnPropertyChanged(nameof(IsChecked));
         }
 
         void VerifyCheckedState()
@@ -133,18 +134,5 @@ namespace TreeView
             //***********************************************************
         }
 
-        #region INotifyPropertyChanged Members
-
-        void NotifyPropertyChanged(string info)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
     }
 }
