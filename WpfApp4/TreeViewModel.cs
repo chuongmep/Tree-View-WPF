@@ -13,6 +13,7 @@ namespace TreeView
         {
             Name = name;
             Children = new List<TreeViewModel>();
+            IsRoot = false;
         }
 
         #region Properties
@@ -20,6 +21,8 @@ namespace TreeView
         public string Name { get; private set; }
         public List<TreeViewModel> Children { get; private set; }
         public bool IsInitiallySelected { get; private set; }
+        public bool IsRoot { get; private set; }
+        public bool IsNodeExpanded { get; private set; }
 
         bool? _isChecked = false;
         TreeViewModel _parent;
@@ -83,6 +86,8 @@ namespace TreeView
         {
             List<TreeViewModel> treeView = new List<TreeViewModel>();
             TreeViewModel tv = new TreeViewModel(topLevelName);
+            tv.IsNodeExpanded = true;
+            tv.IsRoot = true;
 
             treeView.Add(tv);
 
@@ -92,6 +97,7 @@ namespace TreeView
             //Doing this below for this example, you should do it dynamically 
             //***************************************************
             TreeViewModel tvChild4 = new TreeViewModel("Child4");
+            tvChild4.IsRoot = true;
 
             tv.Children.Add(new TreeViewModel("Child1"));
             tv.Children.Add(new TreeViewModel("Child2"));
@@ -100,6 +106,7 @@ namespace TreeView
             tv.Children.Add(new TreeViewModel("Child5"));
 
             TreeViewModel grtGrdChild2 = (new TreeViewModel("GrandChild4-2"));
+            grtGrdChild2.IsRoot = true;
 
             tvChild4.Children.Add(new TreeViewModel("GrandChild4-1"));
             tvChild4.Children.Add(grtGrdChild2);
