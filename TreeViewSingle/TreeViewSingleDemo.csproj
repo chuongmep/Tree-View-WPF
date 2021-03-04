@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5FE7AA49-622E-4355-92D6-E79E860FE3D9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TreeView</RootNamespace>
-    <AssemblyName>TreeView</AssemblyName>
+    <RootNamespace>TreeViewSingleDemo</RootNamespace>
+    <AssemblyName>TreeViewSingleDemo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,8 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModelBase.cs" />
     <Compile Include="TreeViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MultiSelectTreeView\DBTreeView.csproj">
+      <Project>{97b2220d-4a20-47ed-98b8-aed7c7188f2f}</Project>
+      <Name>DBTreeView</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

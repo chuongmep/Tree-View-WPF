@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace TreeView
+namespace DBTreeView
 {
     /// <summary>
     /// A general relay command that takes its parameter as an object

@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfApp4;
+using TreeView;
 
-namespace TreeView
+namespace TreeViewSingleDemo
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -40,7 +29,7 @@ namespace TreeView
                 List<TreeViewModel> models = model.Children;
                 foreach (TreeViewModel viewModel in models)
                 {
-                    MessageBox.Show(viewModel.IsChecked.ToString());
+                    MessageBox.Show($"Name:{viewModel.Name}-Checked{viewModel.IsChecked}");
                 }
             }
         }
