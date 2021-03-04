@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
+using WpfApp4;
 
 namespace TreeView
 {
-    public class TreeViewModel : INotifyPropertyChanged
+    public class TreeViewModel : ViewModelBase
     {
+        public static MainWindow FrMainWindow;
         TreeViewModel(string name)
         {
             Name = name;
@@ -42,7 +41,7 @@ namespace TreeView
 
             if (updateParent && _parent != null) _parent.VerifyCheckedState();
 
-            NotifyPropertyChanged("IsChecked");
+            OnPropertyChanged(nameof(IsChecked));
         }
 
         void VerifyCheckedState()
@@ -114,32 +113,21 @@ namespace TreeView
             return treeView;
         }
 
-        public static List<string> GetTree()
+        void GetTree()
         {
-            List<string> selected = new List<string>();
-
             //select = recursive method to check each tree view item for selection (if required)
-
-            return selected;
-
+            MessageBox.Show("Im here");
+            TreeViewModel root = (TreeViewModel)FrMainWindow.treeView1.Items[0];
+            MessageBox.Show(root.Name);
+            //List<string> selected = new List<string>(TreeViewModel.GetTree());
+            //return selected;
+            
             //***********************************************************
             //From your window capture selected your treeview control like:   TreeViewModel root = (TreeViewModel)TreeViewControl.Items[0];
             //                                                                List<string> selected = new List<string>(TreeViewModel.GetTree());
             //***********************************************************
         }
 
-        #region INotifyPropertyChanged Members
-
-        void NotifyPropertyChanged(string info)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
+        public ICommand Check => new RelayCommand(GetTree);
     }
 }

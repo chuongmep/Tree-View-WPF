@@ -1,7 +1,11 @@
-﻿<Window x:Class="TreeView.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+﻿<Window
+    x:Class="TreeView.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow"
+    Width="525"
+    Height="350"
+    Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
@@ -11,15 +15,32 @@
             </Style>
             <HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}">
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" />
-                    <ContentPresenter Content="{Binding Name, Mode=OneTime}" Margin="2,0" />
+                    <CheckBox
+                        VerticalAlignment="Center"
+                        Focusable="False"
+                        IsChecked="{Binding IsChecked}" />
+                    <ContentPresenter Margin="2,0" Content="{Binding Name, Mode=OneTime}" />
                 </StackPanel>
             </HierarchicalDataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <TreeView Height="287" HorizontalAlignment="Left" Margin="12,12,0,0" x:Name="treeView1" VerticalAlignment="Top" Width="229" 
-                  ItemContainerStyle="{StaticResource TreeViewItemStyle}"
-                  ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TreeView
+            x:Name="treeView1"
+            Grid.Column="0"
+            Margin="12,12,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+            ItemTemplate="{StaticResource CheckBoxItemTemplate}" />
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Button Click="ButtonBase_OnClick"
+                    Content="Get Tree" />
+
+        </StackPanel>
     </Grid>
 </Window>
