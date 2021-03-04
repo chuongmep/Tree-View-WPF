@@ -6,6 +6,6 @@ Example : Select Only Single, Check True False
 
 ![](doc/Single002.gif)
 
-Example : Multi Select, Crt Select, Single Select, Count
+Example : Multi Select, Shift+Select, Single Select, Count
 
 ![](doc/Multi001.gif)
